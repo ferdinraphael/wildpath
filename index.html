@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#071820" />
+    <meta name="description" content="Wildpath is a short browser creature RPG where your companion learns from difficult encounters and adapts to survive them." />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="author" content="Ferdin Raphael" />
+    <link rel="canonical" href="https://ferdinraphael.github.io/wildpath" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Wildpath" />
+    <meta property="og:title" content="Wildpath — A Creature RPG Where Companions Adapt" />
+    <meta property="og:description" content="Choose a companion, cross Fernwake, learn the type system, and adapt after difficult guardian encounters." />
+    <meta property="og:url" content="https://ferdinraphael.github.io/wildpath" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Wildpath — A Creature RPG Where Companions Adapt" />
+    <meta name="twitter:description" content="A short browser creature RPG where losing can teach your companion how to survive the next encounter." />
+
+    <title>Wildpath — A Creature RPG Where Companions Adapt</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./analytics-config.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Wildpath",
+        "description": "A short browser creature RPG where your companion learns from difficult encounters and adapts to survive them.",
+        "applicationCategory": "Game",
+        "operatingSystem": "Web browser",
+        "playMode": "SinglePlayer"
+      }
+    </script>
+  </head>
+  <body>
+    <main id="app">
+      <section class="shell">
+        <header class="brandbar">
+          <div class="brand-lockup">
+            <div class="brand-line"><span class="tree-mark">♠</span><h1>WILDPATH</h1><span class="tree-mark">♠</span></div>
+            <span class="brand-tagline">A JOURNEY OF SMALL CREATURES AND BIG PLACES</span>
+          </div>
+          <div id="status">Choose a companion</div>
+        </header>
+        <div class="game-frame">
+          <canvas id="game" width="960" height="640" aria-label="Wildpath game canvas"></canvas>
+          <div id="starter-overlay" class="overlay starter-overlay">
+            <div class="panel intro-panel">
+              <div class="floating-leaf leaf-a">◆</div><div class="floating-leaf leaf-b">◆</div>
+              <span class="eyebrow">THE TRAIL BEGINS</span>
+              <h2>Choose your first companion</h2>
+              <p class="intro-copy">Three young creatures wait at the edge of Fernwake. Pick one, explore the route, and test your bond in the tall grass.</p>
+              <div id="starter-cards" class="starter-cards"></div>
+              <button id="begin-journey" class="begin-button" type="button"><span>✦</span> Begin the Journey <strong>›</strong></button>
+              <div class="starter-help"><span>← / → to select</span><i>•</i><span>Enter to choose</span><i>•</i><span>Esc to cancel</span></div>
+            </div>
+          </div>
+        </div>
+        <footer class="helpbar"><span>Move: WASD / arrows</span><span>Confirm: Space / Enter</span><span>Battle: click a move or use 1–4</span></footer>
+      </section>
+    </main>
+    <noscript>Wildpath requires JavaScript to play.</noscript>
+    <script type="module" src="./main.min.js"></script>
+  </body>
+</html>
