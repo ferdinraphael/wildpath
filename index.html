@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#071820" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <meta name="description" content="Wildpath is a short browser creature RPG where your companion learns from difficult encounters and adapts to survive them." />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="author" content="Ferdin Raphael" />
@@ -15,9 +16,11 @@
     <meta property="og:description" content="Choose a companion, cross Fernwake, learn the type system, and adapt after difficult guardian encounters." />
     <meta property="og:url" content="https://ferdinraphael.github.io/wildpath" />
 
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Wildpath — A Creature RPG Where Companions Adapt" />
     <meta name="twitter:description" content="A short browser creature RPG where losing can teach your companion how to survive the next encounter." />
+    <meta name="twitter:image" content="https://ferdinraphael.github.io/wildpath/social-preview.png" />
+    <meta name="twitter:image:alt" content="Wildpath starter selection showing Mossling, Cindercub, and Brookit." />
 
     <title>Wildpath — A Creature RPG Where Companions Adapt</title>
     <link rel="stylesheet" href="./style.css" />
@@ -68,6 +71,15 @@
         <footer class="helpbar"><span>Move: WASD / arrows</span><span>Confirm: Space / Enter</span><span>Battle: click a move or use 1–4</span></footer>
       </section>
     </main>
+
+    <div id="rotate-overlay" class="rotate-overlay" aria-live="polite">
+      <div class="rotate-card">
+        <div class="rotate-device" aria-hidden="true"><span></span></div>
+        <h2>Rotate to landscape</h2>
+        <p>Wildpath is designed to play in landscape orientation on smaller screens.</p>
+      </div>
+    </div>
+
     <noscript>Wildpath requires JavaScript to play.</noscript>
     <script type="module" src="./main.min.js"></script>
   </body>
