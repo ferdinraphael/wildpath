@@ -2,19 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#071820" />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <meta name="description" content="Wildpath is a short browser creature RPG where your companion learns from difficult encounters and adapts to survive them." />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="author" content="Ferdin Raphael" />
-    <link rel="canonical" href="https://ferdinraphael.github.io/wildpath" />
+    <link rel="canonical" href="https://ferdinraphael.github.io/wildpath/" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Wildpath" />
     <meta property="og:title" content="Wildpath — A Creature RPG Where Companions Adapt" />
     <meta property="og:description" content="Choose a companion, cross Fernwake, learn the type system, and adapt after difficult guardian encounters." />
-    <meta property="og:url" content="https://ferdinraphael.github.io/wildpath" />
+    <meta property="og:url" content="https://ferdinraphael.github.io/wildpath/" />
+    <meta property="og:image" content="https://ferdinraphael.github.io/wildpath/social-preview.png" />
+    <meta property="og:image:secure_url" content="https://ferdinraphael.github.io/wildpath/social-preview.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Wildpath starter selection showing Mossling, Cindercub, and Brookit." />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Wildpath — A Creature RPG Where Companions Adapt" />
@@ -56,6 +62,15 @@
         </header>
         <div class="game-frame">
           <canvas id="game" width="960" height="640" aria-label="Wildpath game canvas"></canvas>
+
+          <div id="touch-controls" class="touch-controls" aria-label="Touch controls">
+            <div class="touch-dpad" aria-label="Movement controls">
+              <button class="touch-btn touch-up" type="button" data-touch-key="arrowup" aria-label="Move up">▲</button>
+              <button class="touch-btn touch-left" type="button" data-touch-key="arrowleft" aria-label="Move left">◀</button>
+              <button class="touch-btn touch-down" type="button" data-touch-key="arrowdown" aria-label="Move down">▼</button>
+              <button class="touch-btn touch-right" type="button" data-touch-key="arrowright" aria-label="Move right">▶</button>
+            </div>
+</div>
           <div id="starter-overlay" class="overlay starter-overlay">
             <div class="panel intro-panel">
               <div class="floating-leaf leaf-a">◆</div><div class="floating-leaf leaf-b">◆</div>
@@ -80,6 +95,19 @@
       </div>
     </div>
 
+
+    <div id="phone-fullscreen-overlay" class="phone-fullscreen-overlay" aria-live="polite" aria-hidden="true">
+      <div class="phone-fullscreen-card">
+        <span class="eyebrow">PHONE PLAY</span>
+        <h2>Play Wildpath fullscreen</h2>
+        <p>Fullscreen gives the route more room and makes touch play easier.</p>
+        <button id="enter-fullscreen" class="fullscreen-primary" type="button">Enter fullscreen</button>
+        <button id="skip-fullscreen" class="fullscreen-secondary" type="button">Continue in browser</button>
+      </div>
+    </div>
+
+
+    <button id="phone-fullscreen-toggle" class="phone-fullscreen-toggle" type="button" aria-label="Enter fullscreen" title="Enter fullscreen">⛶</button>
     <noscript>Wildpath requires JavaScript to play.</noscript>
     <script type="module" src="./main.min.js"></script>
   </body>

@@ -14,7 +14,7 @@ It can adapt to the type of attack that defeated it, making the next attempt dif
 
 **Play Wildpath:** https://ferdinraphael.github.io/wildpath/
 
-No installation is required. The game runs directly in a modern desktop browser.
+No installation is required. Wildpath runs directly in modern desktop browsers and on phones/tablets in landscape mode. Fullscreen is recommended on phones for the best play area.
 
 ## How a run works
 
@@ -43,9 +43,11 @@ This release implements the idea in a deliberately small form, but it represents
 
 ## Controls
 
-- **Move:** WASD or arrow keys
-- **Choose / confirm:** Enter or Space
-- **Battle:** click a move or press 1–4
+- **Desktop movement:** WASD or arrow keys
+- **Touch movement:** on-screen D-pad in landscape mode
+- **Phone fullscreen:** recommended when prompted for the largest play area
+- **Choose / confirm:** Enter, Space, or tap the visible action button
+- **Battle:** click/tap a move or press 1–4
 
 ## What's included
 

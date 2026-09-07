@@ -299,3 +299,432 @@ body{
     font-size:16px;
   }
 }
+
+
+
+/* v49 touch controls.
+   The D-pad feeds the same heldKeys set as keyboard movement.
+   Existing starter cards, battle move buttons, and restart button remain directly tappable. */
+.touch-controls{
+  display:none;
+  position:absolute;
+  inset:0;
+  z-index:35;
+  pointer-events:none;
+}
+.touch-dpad{
+  position:absolute;
+  left:18px;
+  bottom:18px;
+  width:150px;
+  height:150px;
+  pointer-events:auto;
+}
+.touch-btn,.touch-confirm{
+  -webkit-tap-highlight-color:transparent;
+  touch-action:none;
+  user-select:none;
+  border:1px solid rgba(221,239,226,.28);
+  background:linear-gradient(180deg,rgba(9,31,32,.82),rgba(4,17,19,.88));
+  color:#f7f2df;
+  box-shadow:0 7px 20px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.08);
+  backdrop-filter:blur(5px);
+}
+.touch-btn{
+  position:absolute;
+  width:50px;
+  height:50px;
+  border-radius:14px;
+  font-size:18px;
+  font-weight:900;
+}
+.touch-up{left:50px;top:0}
+.touch-left{left:0;top:50px}
+.touch-down{left:50px;top:100px}
+.touch-right{left:100px;top:50px}
+.touch-btn.pressed,.touch-btn:active,.touch-confirm:active{
+  transform:translateY(1px) scale(.96);
+  border-color:#b9e67e;
+  background:linear-gradient(180deg,rgba(26,76,55,.94),rgba(8,43,31,.96));
+  box-shadow:0 0 0 2px rgba(185,230,126,.18),inset 0 2px 5px rgba(0,0,0,.25);
+}
+.touch-confirm{
+  position:absolute;
+  right:26px;
+  bottom:30px;
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  pointer-events:auto;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:24px;
+  font-weight:900;
+  color:#fff1bd;
+  border-color:rgba(226,189,109,.55);
+  background:linear-gradient(180deg,rgba(75,59,25,.88),rgba(37,29,13,.92));
+}
+
+/* Scene-specific controls:
+   choose/complete => A only; world => D-pad; battle => direct move buttons already provide touch input. */
+.touch-controls[data-scene="choose"] .touch-dpad,
+.touch-controls[data-scene="complete"] .touch-dpad,
+.touch-controls[data-scene="battle"] .touch-dpad{display:none}
+.touch-controls[data-scene="world"] .touch-confirm,
+.touch-controls[data-scene="battle"] .touch-confirm{display:none}
+
+@media (pointer:coarse) and (orientation:landscape){
+  .touch-controls{display:block}
+}
+
+/* Smaller landscape phones: keep controls usable without obscuring the route. */
+@media (pointer:coarse) and (orientation:landscape) and (max-height:430px){
+  .touch-dpad{
+    left:12px;
+    bottom:12px;
+    width:126px;
+    height:126px;
+  }
+  .touch-btn{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    font-size:15px;
+  }
+  .touch-up{left:42px;top:0}
+  .touch-left{left:0;top:42px}
+  .touch-down{left:42px;top:84px}
+  .touch-right{left:84px;top:42px}
+  .touch-confirm{
+    right:18px;
+    bottom:18px;
+    width:54px;
+    height:54px;
+    font-size:21px;
+  }
+}
+
+
+
+/* v50 real-device touch refinement.
+   - Remove redundant A button.
+   - Enlarge D-pad to remain finger-friendly after the game shell is scaled.
+   - Make controls more translucent.
+   - Tighten the starter layout on short landscape browser viewports so Begin Journey stays visible. */
+
+.touch-confirm{display:none !important}
+
+/* Softer, more transparent D-pad treatment. */
+.touch-btn{
+  background:rgba(5,18,20,.52);
+  border-color:rgba(230,242,235,.22);
+  color:rgba(255,250,232,.94);
+  box-shadow:
+    0 5px 14px rgba(0,0,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.06);
+  backdrop-filter:blur(3px);
+}
+.touch-btn.pressed,.touch-btn:active{
+  border-color:rgba(185,230,126,.78);
+  background:rgba(20,70,49,.68);
+  box-shadow:
+    0 0 0 2px rgba(185,230,126,.12),
+    inset 0 2px 4px rgba(0,0,0,.18);
+}
+
+/* Real phones often have far less usable landscape height because of browser chrome.
+   These dimensions intentionally look large in CSS because the whole shell is scaled down. */
+@media (pointer:coarse) and (orientation:landscape) and (max-height:500px){
+  .touch-dpad{
+    left:16px;
+    bottom:16px;
+    width:240px;
+    height:240px;
+  }
+  .touch-btn{
+    width:80px;
+    height:80px;
+    border-radius:20px;
+    font-size:26px;
+  }
+  .touch-up{left:80px;top:0}
+  .touch-left{left:0;top:80px}
+  .touch-down{left:80px;top:160px}
+  .touch-right{left:160px;top:80px}
+
+  /* Compress only the starter presentation; gameplay canvas/world remain unchanged. */
+  .intro-panel{
+    padding:10px 14px 8px;
+  }
+  .intro-panel h2{
+    font-size:24px;
+    margin:2px 0 3px;
+    line-height:1;
+  }
+  .intro-copy{
+    margin-bottom:7px;
+    font-size:9.5px;
+    line-height:1.2;
+  }
+  .eyebrow{
+    font-size:7.5px;
+    letter-spacing:.22em;
+  }
+  .starter-cards{
+    gap:8px;
+  }
+  .starter-art{
+    height:125px;
+  }
+  .starter-content{
+    padding:7px 9px 8px;
+  }
+  .starter-card h3{
+    font-size:16px;
+  }
+  .starter-card p{
+    min-height:22px;
+    margin:3px 0 6px;
+    font-size:8.5px;
+    line-height:1.2;
+  }
+  .type-pill{
+    font-size:8px;
+    padding:3px 6px;
+  }
+  .stat-grid{
+    grid-template-columns:36px 1fr;
+    gap:3px 5px;
+  }
+  .stat-grid span{
+    font-size:7.5px;
+  }
+  .stat-grid b{
+    height:6px;
+  }
+  .begin-button{
+    min-width:220px;
+    margin-top:6px;
+    padding:7px 18px;
+    font-size:14px;
+  }
+  .begin-button strong{
+    font-size:20px;
+  }
+  .starter-help{
+    margin-top:3px;
+    font-size:7px;
+  }
+}
+
+/* Extra-short browser viewport safety net. */
+@media (pointer:coarse) and (orientation:landscape) and (max-height:390px){
+  .intro-panel{
+    padding-top:7px;
+    padding-bottom:6px;
+  }
+  .intro-panel h2{
+    font-size:21px;
+  }
+  .intro-copy{
+    margin-bottom:5px;
+  }
+  .starter-art{
+    height:108px;
+  }
+  .starter-content{
+    padding-top:5px;
+    padding-bottom:6px;
+  }
+  .starter-card p{
+    display:none;
+  }
+  .begin-button{
+    margin-top:4px;
+    padding-top:6px;
+    padding-bottom:6px;
+  }
+  .starter-help{
+    display:none;
+  }
+}
+
+
+
+/* v51 phone presentation pass.
+   Fullscreen is user-triggered (browser requirement), world camera zoom is phone-only,
+   starter art scales to fit instead of being cropped, and tablet/desktop remain unchanged. */
+.phone-fullscreen-overlay{
+  position:fixed;
+  inset:0;
+  z-index:9000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background:radial-gradient(circle at 50% 22%,rgba(19,61,63,.24),rgba(2,9,11,.94) 64%),#04090b;
+  text-align:center;
+}
+.phone-fullscreen-overlay.visible{display:flex}
+.phone-fullscreen-card{
+  width:min(390px,88vw);
+  padding:24px 22px 20px;
+  border:1px solid rgba(87,166,185,.58);
+  border-radius:22px;
+  background:linear-gradient(180deg,rgba(5,35,45,.97),rgba(4,25,32,.98));
+  box-shadow:0 24px 70px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.05);
+}
+.phone-fullscreen-card h2{
+  margin:7px 0 7px;
+  font:800 27px/1.05 Georgia,"Times New Roman",serif;
+  color:#f5f0e5;
+}
+.phone-fullscreen-card p{
+  margin:0 auto 16px;
+  max-width:310px;
+  color:#c7d4d5;
+  font-size:13px;
+  line-height:1.4;
+}
+.fullscreen-primary,.fullscreen-secondary{
+  width:100%;
+  border-radius:999px;
+  cursor:pointer;
+}
+.fullscreen-primary{
+  padding:11px 18px;
+  border:1px solid #91e65a;
+  background:linear-gradient(180deg,#0d6936,#083d25);
+  color:#fff6d8;
+  font:800 16px Georgia,"Times New Roman",serif;
+  box-shadow:0 0 20px rgba(106,220,83,.2);
+}
+.fullscreen-secondary{
+  margin-top:8px;
+  padding:8px 14px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.035);
+  color:#9fb2b5;
+  font-size:11px;
+}
+
+/* Slightly less visual obstruction while keeping the now-correct touch target size. */
+.touch-btn{
+  background:rgba(5,18,20,.40);
+  border-color:rgba(230,242,235,.18);
+  backdrop-filter:blur(2px);
+}
+.touch-btn.pressed,.touch-btn:active{
+  background:rgba(20,70,49,.56);
+}
+
+@media (pointer:coarse) and (orientation:landscape) and (max-height:500px){
+  /* Preserve the complete creature silhouette in the shortened starter cards. */
+  .starter-art{
+    height:116px;
+    overflow:hidden;
+  }
+  .starter-art-stage{
+    bottom:8px;
+    height:14px;
+  }
+  .starter-sprite,
+  .starter-art.ember .starter-sprite{
+    width:auto;
+    height:90px;
+    max-width:82%;
+    max-height:90px;
+    margin:0 !important;
+    object-fit:contain;
+    transform:none;
+  }
+  .starter-card:hover .starter-sprite,
+  .starter-card.selected .starter-sprite{
+    transform:scale(1.015);
+  }
+}
+
+@media (pointer:coarse) and (orientation:landscape) and (max-height:390px){
+  .starter-art{height:102px}
+  .starter-sprite,
+  .starter-art.ember .starter-sprite{
+    height:78px;
+    max-height:78px;
+  }
+}
+
+/* Fullscreen gives a phone enough height to let the shell grow wider. We only trim
+   chrome around the canvas; the 960x640 logical game canvas is unchanged. */
+@media (pointer:coarse) and (orientation:landscape) and (max-height:520px){
+  body.phone-fullscreen-active .shell{
+    padding:5px;
+  }
+  body.phone-fullscreen-active .brandbar{
+    padding:2px 2px 6px;
+  }
+  body.phone-fullscreen-active .brand-line h1{
+    font-size:30px;
+  }
+  body.phone-fullscreen-active .brand-tagline{
+    font-size:6px;
+  }
+  body.phone-fullscreen-active .helpbar{
+    display:none;
+  }
+}
+
+
+
+/* v52 mobile polish: suppress long-press text selection/search callouts inside the game UI. */
+#app,
+.shell,
+.game-frame,
+.overlay,
+.rotate-overlay,
+.phone-fullscreen-overlay,
+.phone-fullscreen-toggle,
+button{
+  -webkit-user-select:none;
+  user-select:none;
+  -webkit-touch-callout:none;
+}
+
+canvas,
+img{
+  -webkit-user-drag:none;
+  user-select:none;
+}
+
+/* Persistent phone-landscape fullscreen control. It lives outside the scaled game shell so
+   it remains easy to tap after the user exits fullscreen. */
+.phone-fullscreen-toggle{
+  position:fixed;
+  top:10px;
+  right:12px;
+  z-index:8800;
+  display:none;
+  width:42px;
+  height:42px;
+  padding:0;
+  border:1px solid rgba(214,232,226,.24);
+  border-radius:13px;
+  background:rgba(5,20,23,.48);
+  color:rgba(250,246,227,.92);
+  backdrop-filter:blur(4px);
+  box-shadow:0 5px 16px rgba(0,0,0,.2);
+  font:700 22px/1 system-ui,sans-serif;
+  align-items:center;
+  justify-content:center;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.phone-fullscreen-toggle.visible{display:flex}
+.phone-fullscreen-toggle.active{
+  background:rgba(16,57,43,.52);
+  border-color:rgba(173,224,132,.34);
+  font-size:28px;
+  font-weight:400;
+}
+.phone-fullscreen-overlay.visible + .phone-fullscreen-toggle,
+.phone-fullscreen-overlay.visible ~ .phone-fullscreen-toggle{
+  display:none;
+}
