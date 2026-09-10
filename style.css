@@ -78,10 +78,7 @@ canvas{filter:saturate(1.06) contrast(1.015)}
 
 
 
-/* v45 responsive presentation pass.
-   - Compact portrait viewports show a rotate prompt.
-   - Landscape scaling is based only on actual available width/height.
-   - The logical 960x640 game canvas and world/map remain unchanged. */
+/* Responsive presentation: portrait rotate prompt and viewport-based landscape scaling. */
 
 body{overflow-x:hidden}
 #app{width:100%}
@@ -225,9 +222,7 @@ body{overflow-x:hidden}
 
 
 
-/* v46 responsive refinement:
-   - no document scrolling on any viewport
-   - compact-landscape battle controls stay shallow so the player HUD/creature remain visible */
+/* Prevent document scrolling and keep compact-landscape battle controls shallow. */
 html,body{
   width:100%;
   height:100%;
@@ -302,9 +297,7 @@ body{
 
 
 
-/* v49 touch controls.
-   The D-pad feeds the same heldKeys set as keyboard movement.
-   Existing starter cards, battle move buttons, and restart button remain directly tappable. */
+/* Touch controls. The D-pad feeds the same held-key movement path as the keyboard. */
 .touch-controls{
   display:none;
   position:absolute;
@@ -320,7 +313,7 @@ body{
   height:150px;
   pointer-events:auto;
 }
-.touch-btn,.touch-confirm{
+.touch-btn{
   -webkit-tap-highlight-color:transparent;
   touch-action:none;
   user-select:none;
@@ -342,35 +335,17 @@ body{
 .touch-left{left:0;top:50px}
 .touch-down{left:50px;top:100px}
 .touch-right{left:100px;top:50px}
-.touch-btn.pressed,.touch-btn:active,.touch-confirm:active{
+.touch-btn.pressed,.touch-btn:active{
   transform:translateY(1px) scale(.96);
   border-color:#b9e67e;
   background:linear-gradient(180deg,rgba(26,76,55,.94),rgba(8,43,31,.96));
   box-shadow:0 0 0 2px rgba(185,230,126,.18),inset 0 2px 5px rgba(0,0,0,.25);
 }
-.touch-confirm{
-  position:absolute;
-  right:26px;
-  bottom:30px;
-  width:64px;
-  height:64px;
-  border-radius:50%;
-  pointer-events:auto;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:24px;
-  font-weight:900;
-  color:#fff1bd;
-  border-color:rgba(226,189,109,.55);
-  background:linear-gradient(180deg,rgba(75,59,25,.88),rgba(37,29,13,.92));
-}
 
-/* Scene-specific controls:
-   choose/complete => A only; world => D-pad; battle => direct move buttons already provide touch input. */
+/* The D-pad is only needed while exploring; other scenes use their visible buttons directly. */
 .touch-controls[data-scene="choose"] .touch-dpad,
 .touch-controls[data-scene="complete"] .touch-dpad,
 .touch-controls[data-scene="battle"] .touch-dpad{display:none}
-.touch-controls[data-scene="world"] .touch-confirm,
-.touch-controls[data-scene="battle"] .touch-confirm{display:none}
 
 @media (pointer:coarse) and (orientation:landscape){
   .touch-controls{display:block}
@@ -394,26 +369,11 @@ body{
   .touch-left{left:0;top:42px}
   .touch-down{left:42px;top:84px}
   .touch-right{left:84px;top:42px}
-  .touch-confirm{
-    right:18px;
-    bottom:18px;
-    width:54px;
-    height:54px;
-    font-size:21px;
-  }
 }
 
 
 
-/* v50 real-device touch refinement.
-   - Remove redundant A button.
-   - Enlarge D-pad to remain finger-friendly after the game shell is scaled.
-   - Make controls more translucent.
-   - Tighten the starter layout on short landscape browser viewports so Begin Journey stays visible. */
-
-.touch-confirm{display:none !important}
-
-/* Softer, more transparent D-pad treatment. */
+/* Phone-landscape touch sizing and presentation. */
 .touch-btn{
   background:rgba(5,18,20,.52);
   border-color:rgba(230,242,235,.22);
@@ -550,9 +510,7 @@ body{
 
 
 
-/* v51 phone presentation pass.
-   Fullscreen is user-triggered (browser requirement), world camera zoom is phone-only,
-   starter art scales to fit instead of being cropped, and tablet/desktop remain unchanged. */
+/* Phone presentation: user-triggered fullscreen, phone-only world zoom support, and compact starter layout. */
 .phone-fullscreen-overlay{
   position:fixed;
   inset:0;
@@ -674,7 +632,7 @@ body{
 
 
 
-/* v52 mobile polish: suppress long-press text selection/search callouts inside the game UI. */
+/* Suppress long-press text selection/search callouts inside the game UI. */
 #app,
 .shell,
 .game-frame,
